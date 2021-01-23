@@ -32,10 +32,10 @@ int main() {
   }
 
   // argument type
-  ffi_type* args[] = {&ffi_type_sint, &ffi_type_sint};
+  ffi_type* args[] = {&ffi_type_sint, &ffi_type_sint, &ffi_type_pointer};
 
   ffi_cif cif;
-  ffi_status status = ffi_prep_cif(&cif, FFI_DEFAULT_ABI, 2, &ffi_type_sint, args);
+  ffi_status status = ffi_prep_cif(&cif, FFI_DEFAULT_ABI, 3, &ffi_type_sint, args);
   if (status != FFI_OK) {
     printf("error ffi");
     exit(1);
@@ -43,13 +43,15 @@ int main() {
 
   int a = 3;
   int b = 4;
-  int value1 = a;
-  int value2 = b;
-  void* values[] = {&value1, &value2};
+  char* str = "hello";
+  ffi_arg value1 = a;
+  ffi_arg value2 = b;
+  ffi_arg value3 = (ffi_arg)str;
+  void* values[] = {&value1, &value2, &value3};
   int result;
   ffi_call(&cif, FFI_FN(fn), &result, values);
   printf("%d + %d = %d\n", a, b, result);
-  printf("arg1: %d, arg2: %d\n", value1, value2);
+  /* printf("arg1: %d, arg2: %d\n", value1, value2); */
   
   return 0;
 }
