@@ -49,10 +49,14 @@ int main() {
   int a = 1;
   int b = 2;
   int c = 3;
-
+  
   intlongint(a, b, c);
   intintlong(a, b, c);
   longintint(a, b, c);
+
+  typedef void (*func)(int, int, int);
+  func f = (func)&intlongint;
+  f(a, b, c);
   
   return 0;
 }
