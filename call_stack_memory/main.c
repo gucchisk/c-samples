@@ -31,7 +31,7 @@ void intlongint(int a, long b, int c) {
   printf("a: %p b: %p c: %p\n", &a, &b, &c);
   long size = getframesize(&c);
   printf("size: %ld\n", size);
-  printstack("intlonging", &c, size);
+  printstack("intlongint", &c, size);
 }
 
 void intintlong(int a, int b, long c) {
