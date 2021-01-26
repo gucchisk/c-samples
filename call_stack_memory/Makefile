@@ -1,5 +1,5 @@
 main: main.s
-	gcc main.s -o main
+	gcc main.s -std=c99 -o main
 
 main.s: main.c
 	gcc -S main.c

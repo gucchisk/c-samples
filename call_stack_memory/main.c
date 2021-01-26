@@ -28,18 +28,21 @@ long getframesize(void* ptr) {
 }
 
 void intlongint(int a, long b, int c) {
+  printf("a: %p b: %p c: %p\n", &a, &b, &c);
   long size = getframesize(&c);
   printf("size: %ld\n", size);
   printstack("intlonging", &c, size);
 }
 
 void intintlong(int a, int b, long c) {
+  printf("a: %p b: %p c: %p\n", &a, &b, &c);
   long size = getframesize(&c);
   printf("size: %ld\n", size);
   printstack("intintlong", &c, size);
 }
 
 void longintint(long a, int b, int c) {
+  printf("a: %p b: %p c: %p\n", &a, &b, &c);
   long size = getframesize(&c);
   printf("size: %ld\n", size);
   printstack("longintint", &c, size);
